@@ -1,0 +1,22 @@
+notifications:
+  email: false
+
+  language: go
+go:
+  - 1.11.x
+install:
+  - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+
+before_deploy:
+  - make dist
+
+deploy:
+  provider: releases
+  api_key:
+    secure: ogJyT3m6EuUuxmHEaJpUgrzoX//TcqHyihqYGhSn+wdrQ4RYPj+Q97ZhDTGls2Pp4KciMs5IHmfNslvwEJUF93GKyRIzRdL1KLoaeoXn6ZoGCIqebI0J8ZmNszqvZWZ4nHi6VzXh7SUhntxEOr2LLp6Wwtt8SHC+O/wI95e8ZL2xlbTlF0rwSkW386iNvCmQwcar2lIiMUVbbKKemA1EbW/sY4h0PXFHjbnWdVSoHKJgU7zE3KV+JYZ9Gosndq3Ak3BBrrz47FPHp4GhBp8Vzph593awqowiXDcmFWGqd1+jnQsV1q6fRl/bE1oNF1X5ke8zuBLc9HEdYo1s6nruuuazg7p8z676xSshkMTo3s7YXclYNuiKN1wkE66LCx21Xub4rxwJ/jcVA2OVaO7pFUrWM/ss7NyrLOTpn470sCzTtgfErg4P2EIP9Kr65p5yMOhUdEXs9TnDSRLXv6S4Xbjg5HoqQGUoVWrak8On5LH+c286YbQ1YaiPHUvZzMuyJJ4F7+JphT9cuRm6npl4DcMneMohUaHQqauTQgQRKrxi4TjA68FAXf86uCRnWhT824pp1d6RTqHD0f3ODWLbkONu9oPwq/XoZd96qeJXqx9kiBm6RuyQm2aLoNCvss/UKChXU0J76f+zJdOm3Oy+F+Meh+2QLDZlZ0maHt8JuoM=
+  file_glob: true
+  file: dist/org.kaakaa.mmplugin-channel-recommender-*.tar.gz
+  skip_cleanup: true
+  on:
+    repo: kaakaa/mmplugin-channel-recommender
+    tags: true

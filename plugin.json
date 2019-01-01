@@ -1,0 +1,32 @@
+{
+    "id": "org.kaakaa.mmplugin-channel-recommender",
+    "name": "Channel Recommend Plugin",
+    "description": "This plugin recomends channels you should join.",
+    "version": "0.0.1",
+    "server": {
+        "executables": {
+            "linux-amd64": "server/dist/plugin-linux-amd64",
+            "darwin-amd64": "server/dist/plugin-darwin-amd64",
+            "windows-amd64": "server/dist/plugin-windows-amd64.exe"
+        },
+        "executable": ""
+    },
+    "settings_schema": {
+        "settings": [
+            {
+                "key": "Text",
+                "display_name": "Messages",
+                "type": "longtext",
+                "help_text": "Text used as recommend post. Text must include `{{.Channels}}` that will be replaced with recommended channel.",
+                "default": "Users who joined this channel also join {{.Channels}}."
+            },
+            {
+                "key": "ExcludedChannelString",
+                "display_name": "Excluded channels",
+                "type": "text",
+                "help_text": "When users join channels specified in here, recommend post will not be posted. Separate two or more channels with spaces, and specify channels as Channel Handle (refs. https://docs.mattermost.com/help/getting-started/organizing-conversations.html#naming-a-channel).",
+                "default": "town-square off-topic"
+            }
+        ]
+    }
+}
